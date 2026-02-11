@@ -2,37 +2,27 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum ExBattleState
-{
-    START,
-    PLAYER_SELECTING,
-    ENEMY_SELECTING,
-    EXECUTING_ACTION,
-    END
-}
-
-public class ExBattleManager : MonoBehaviour
+public class BattleManager : MonoBehaviour
 {
 #region Variables
-    List<ExCombatant> allCombatants;
-    List<ExCombatant> turnQueue;
-    List<ExCombatAction> actionQueue;
-    List<ExCombatAction> interruptActionQueue;
+    List<Combatant> allCombatants;
+    List<Combatant> turnQueue;
+    List<CombatAction> actionQueue;
 #endregion
 
 #region Functions
     void Start()
     {
-        allCombatants = FindObjectsByType<ExCombatant>(FindObjectsSortMode.None).ToList();
+        allCombatants = FindObjectsByType<Combatant>(FindObjectsSortMode.None).ToList();
         turnQueue = allCombatants;
         CalculateTurnOrder(ref turnQueue);
     }
 
     // optimized bubble sort from GeeksForGeeks
     // https://www.geeksforgeeks.org/dsa/bubble-sort-algorithm/
-    void CalculateTurnOrder(ref List<ExCombatant> combatants)
+    void CalculateTurnOrder(ref List<Combatant> combatants)
     {
-        ExCombatant temp;
+        Combatant temp;
         int i, j;
         bool swapped;
 
@@ -54,12 +44,10 @@ public class ExBattleManager : MonoBehaviour
         }
     }
 
-    public void OnCombatActionSelected(ExCombatAction action) { actionQueue.Add(action); }
-    public void OnInterruptActionSelected(ExCombatAction action) { interruptActionQueue.Add(action); }
+    public void OnCombatActionQueued(CombatAction action) { actionQueue.Add(action); }
 
     void ExecuteCombatActions()
     {
-        // TODO: check for interrupt actions, execute in order
         // TODO: execute actions in order
     }
 #endregion
