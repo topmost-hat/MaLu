@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7188641056606447573}
-  - component: {fileID: -7484342336931180365}
+  - component: {fileID: 6218656452332549806}
   m_Layer: 0
   m_Name: PlayerMagenta
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 529122647087961268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7484342336931180365
+--- !u!114 &6218656452332549806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,17 +42,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6921172497341936463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 981a4737ff581d6adb7eb4d9081b570b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4da893a5fc32181f39e81bf44569a5ff, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Combatant
-  baseStats:
-    health: 10
-    mana: 15
-    power: 5
-    defense: 0
-    speed: 4
-  sfx:
-    hurt: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1001 &8799203541213024679
 PrefabInstance:
   m_ObjectHideFlags: 0
