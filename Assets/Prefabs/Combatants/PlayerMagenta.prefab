@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da893a5fc32181f39e81bf44569a5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  manager: {fileID: 0}
+  turnTakerID: 1
+  jumpPath: {fileID: 0}
 --- !u!1001 &8799203541213024679
 PrefabInstance:
   m_ObjectHideFlags: 0

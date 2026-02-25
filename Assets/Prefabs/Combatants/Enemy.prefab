@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7be103b296ae5f88709b9675d710dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  manager: {fileID: 0}
+  turnTakerID: 2
 --- !u!1001 &961025166034563745
 PrefabInstance:
   m_ObjectHideFlags: 0

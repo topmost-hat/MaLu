@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { BATTLE_START, SELECTING_ACTION, PERFORMING_ACTION, PLAYER_WINS, PLAYER_LOSES }
+public enum GameState { BATTLING, BATTLE_OVER }
 public enum TurnTaker { PLAYER_1, PLAYER_2, ENEMY_1, ENEMY_2, ENEMY_3 }
 
 public class BattleManager : MonoBehaviour
@@ -12,22 +12,50 @@ public class BattleManager : MonoBehaviour
     [SerializeField] Enemy e2;
     [SerializeField] Enemy e3; // not anymore
     
-    GameState state;
     List<TurnTaker> turnOrder;
-    uint currentTurn;
+    int currentTurn;
+
+    GameState state = GameState.BATTLING;
 
     void Start()
     {
-        state = GameState.BATTLE_START;
         turnOrder = new() { TurnTaker.PLAYER_1, TurnTaker.PLAYER_2,
             TurnTaker.ENEMY_1, TurnTaker.ENEMY_2, TurnTaker.ENEMY_3 };
         ShuffleTurnOrder();
+
+        InitiateTurn();
     }
 
-    void NextTurn()
+    void InitiateTurn()
     {
+        switch(turnOrder[currentTurn])
+        {
+            case TurnTaker.PLAYER_1:
+                p1.TakeTurn();
+                break;
+            case TurnTaker.PLAYER_2:
+                p2.TakeTurn();
+                break;
+            case TurnTaker.ENEMY_1:
+                e1.TakeTurn();
+                break;
+            case TurnTaker.ENEMY_2:
+                e2.TakeTurn();
+                break;
+            case TurnTaker.ENEMY_3:
+                e3.TakeTurn();
+                break;
+        }
+    }
+
+    public void NextTurn()
+    {
+        if(GameState.BATTLING != state) { return; }
+
         ++currentTurn;
         if( turnOrder.Count <= currentTurn) { ShuffleTurnOrder(); }
+
+        InitiateTurn();
     }
 
     // Modified super simple shuffling algorithm by Smooth_P (second post)
@@ -45,6 +73,7 @@ public class BattleManager : MonoBehaviour
 
     public void RemoveFromTurnOrder(TurnTaker target)
     {
+        // remove from turn order
         for(int i = 0; i < turnOrder.Count; i++)
         {
             if(target == turnOrder[i])
@@ -53,5 +82,71 @@ public class BattleManager : MonoBehaviour
                 if(i < currentTurn) { --currentTurn; }
             }
         }
+
+        // get rid of reference (object is about to be destroyed)
+        switch(target)
+        {
+            case TurnTaker.PLAYER_1:
+                p1 = null;
+                break;
+            case TurnTaker.PLAYER_2:
+                p2 = null;
+                break;
+            case TurnTaker.ENEMY_1:
+                e1 = null;
+                break;
+            case TurnTaker.ENEMY_2:
+                e2 = null;
+                break;
+            case TurnTaker.ENEMY_3:
+                e3 = null;
+                break;
+        }
+
+        // check if player has won or lost
+        if(null == e1 && null == e2 && null == e3)
+        {
+            state = GameState.BATTLE_OVER;
+            print("All enemies defeated. You win!");
+        }
+        else if(null == p1 && null == p2)
+        {
+            state = GameState.BATTLE_OVER;
+            print("All players defeated. You lose...");
+        }
+    }
+
+    public Player GetRandomPlayer()
+    {
+        Player player = null;
+
+        do
+        {
+            player = Random.Range(0, 99) % 2 == 1 ? p1 : p2;
+        } while(null == player);
+
+        return player;
+    }
+    public Enemy GetRandomEnemy()
+    {
+        Enemy enemy = null;
+
+        do
+        {
+            switch(Random.Range(0, 99) % 3)
+            {
+                case 1:
+                    enemy = e1;
+                    break;
+                case 2:
+                    enemy = e2;
+                    break;
+                case 0:
+                    enemy = e3;
+                    break;
+            }
+        } while(null == enemy);
+
+        return enemy;
     }
 }

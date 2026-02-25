@@ -127,6 +127,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5902807447616042859, guid: 8a9532a11865872029c8fb4a2c90881a, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 349621627}
+    - target: {fileID: 5902807447616042859, guid: 8a9532a11865872029c8fb4a2c90881a, type: 3}
+      propertyPath: turnTakerID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6675169828642343171, guid: 8a9532a11865872029c8fb4a2c90881a, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -381,6 +389,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5902807447616042859, guid: 8a9532a11865872029c8fb4a2c90881a, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 349621627}
+    - target: {fileID: 5902807447616042859, guid: 8a9532a11865872029c8fb4a2c90881a, type: 3}
+      propertyPath: turnTakerID
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6675169828642343171, guid: 8a9532a11865872029c8fb4a2c90881a, type: 3}
       propertyPath: m_Name
       value: Enemy3
@@ -769,6 +785,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2973509681361520954, guid: 0dd44671f6bffa5b6a2ee22895ec4c4b, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 349621627}
     - target: {fileID: 6780851969933514202, guid: 0dd44671f6bffa5b6a2ee22895ec4c4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.97
@@ -838,6 +858,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5902807447616042859, guid: 8a9532a11865872029c8fb4a2c90881a, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 349621627}
     - target: {fileID: 6675169828642343171, guid: 8a9532a11865872029c8fb4a2c90881a, type: 3}
       propertyPath: m_Name
       value: Enemy1
@@ -907,6 +931,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6218656452332549806, guid: a2269accd933402c4bf8a7b9f13d27a3, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 349621627}
     - target: {fileID: 6921172497341936463, guid: a2269accd933402c4bf8a7b9f13d27a3, type: 3}
       propertyPath: m_Name
       value: PlayerMagenta
